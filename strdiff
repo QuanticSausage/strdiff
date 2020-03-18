@@ -10,6 +10,7 @@ STR1=$1
 STR2=$2
 LEN_STR1=${#STR1}
 LEN_STR2=${#STR2}
+let N_OF_DIF=0
 
 if [[ ${LEN_STR1} -eq ${LEN_STR2} ]];
 	then printf "Length of both strings: ${LEN_STR1}\n"
@@ -32,6 +33,7 @@ for ((i=0;i<END;i++)); do
 	if [ "$CHAR1" != "$CHAR2" ];
 	then
 		printf "\033[0;31m$CHAR1"
+		N_OF_DIF=$(( $N_OF_DIF + 1 ))
 	else 
 		printf "\033[0;39m$CHAR1"
 	fi
@@ -50,6 +52,6 @@ for ((i=0;i<END;i++)); do
 	fi
 done
 
-printf "\n"
+printf "\n Number of differences: ${N_OF_DIF}\n"
 
 exit
